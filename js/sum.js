@@ -1,39 +1,61 @@
 $(document).ready(function(){
     var siteli = $("#site").find("li");
     var siteli2 = $("#site").find("li").eq(1);
+    var cursor = $(".cursor");
     //페이지 로딩 시 나타나도록
-    //setTimeout(Down, 1000);   
+    setTimeout(Down, 1000);   
 
     //마우스 오버 시 목차 너비변화
     $(".btn2, .btn3").on("mouseenter",function(){
-        siteli.css("width","15%");
-        var ind = $(this).attr("index-data");
-        var inde = parseInt(ind)-1;
-        siteli.eq(inde).addClass("on").css("width","68%").find("video").get(0).play();
+        btnenter($(this));
         
     })
     $(".btn2, .btn3").on("mouseout",function(){
         var ind = $(this).attr("index-data");
         var inde = parseInt(ind)-1;
         Mouseout(inde);
+        cursor.css("transform","translate(-50%,0%)");
     })
     siteli2.on("mouseenter",function(){
-        siteli.css("width","15%");
-        $(this).addClass("on").css("width","68%").find("video").get(0).play();
+        si2();
+        
     });
     siteli2.on("mouseout",function(){
         var ind = $(this).index()
         Mouseout(ind);
     });
 
+    $(".btn2").on("mouseenter",function(){
+        cursor.css("transform","translate(-200%,0%)");
+    });
+    $(".btn3").on("mouseenter",function(){
+        cursor.css("transform","translate(100%,0%)");
+    });
+    //메인사이트 미리시작
+    setTimeout(si2,2000);
+
     //전자시계
     setInterval(showTime, 1000);
-    
+
+    function si2(){
+        siteli.css("width","15%");
+        siteli2.addClass("on").css("width","68%").find("video").get(0).play();
+        cursor.addClass("on").find("span").text("Click to link!");
+    }
+    function btnenter(el){
+        siteli.css("width","15%");
+        var ind = el.attr("index-data");
+        var inde = parseInt(ind)-1;
+        siteli.eq(inde).addClass("on").css("width","68%").find("video").get(0).play();
+        cursor.addClass("on").find("span").text("Click to link!");;
+        siteli2.find("video").get(0).pause();
+    }
     function Mouseout(index) {
         siteli.eq(index).removeClass("on").find("video").get(0).pause();
-        siteli.eq(0).css("width","24%");
-        siteli.eq(1).css("width","50%");
-        siteli.eq(2).css("width","24%");
+        siteli.eq(0).css("width","19%");
+        siteli.eq(1).css("width","60%");
+        siteli.eq(2).css("width","19%");
+        cursor.removeClass("on").find("span").text("Hover to play!");
     }
 
 
