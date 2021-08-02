@@ -17,6 +17,7 @@ $(document).ready(function(){
 
     $tab.on("mouseout",function(){
         tabout($(this));
+        cursor.css("transform","translate(-50%,0%)");
     });
     $(".btn2, .btn3").on("mouseout",function(){
         var ind = $(this).attr("index-data");
@@ -35,10 +36,10 @@ $(document).ready(function(){
     });
 
     $(".btn2").on("mouseenter",function(){
-        cursor.css("transform","translate(-300%,0%)");
+        cursor.css("transform","translate(-200%,0%)");
     });
     $(".btn3").on("mouseenter",function(){
-        cursor.css("transform","translate(300%,0%)");
+        cursor.css("transform","translate(200%,0%)");
     });
     //메인사이트 미리시작
     setTimeout(si2,2000);
@@ -70,6 +71,7 @@ $(document).ready(function(){
                 siteli.eq(index).addClass("on").css("width","68%").find("video").get(0).play();
                 cursor.addClass("on").find("span").text("Click to link!");;
                 siteli2.find("video").get(0).pause();
+                cursor.css("transform","translate(-200%,0%)");
             }
             if(index===2){
                 $(".btn3").addClass("on");
@@ -77,6 +79,7 @@ $(document).ready(function(){
                 siteli.eq(index).addClass("on").css("width","68%").find("video").get(0).play();
                 cursor.addClass("on").find("span").text("Click to link!");;
                 siteli2.find("video").get(0).pause();
+                cursor.css("transform","translate(200%,0%)");
             } 
         }
     }
