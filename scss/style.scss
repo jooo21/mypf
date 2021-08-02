@@ -1,76 +1,109 @@
 @charset "utf-8";
 @import "reset";
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Italiana&family=Raleway+Dots&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap');
 // font-family: 'Abril Fatface', cursive;
 // font-family: 'Italiana', serif;
 // font-family: 'Raleway Dots', cursive;
-@media screen and (min-width:500px) {
+//font-family: 'Noto Sans KR', sans-serif;
+@media screen and (min-width:500px) and (min-height:700px) {
     body {
-        background: #EFE9E2;overflow: hidden;
+        overflow: hidden;
     }
     
-    // index
-    .marq01 {
-        font:30px/1 'Italiana', serif;
-        padding:25px 0px;
-        border-top: 1px solid #eee;
-        border-bottom: 1px solid #333;
-    }
-    .marq02 {
-        font:30px/1 'Italiana', serif;
-        padding:25px 0px;
-        border-top: 1px solid #333;
-        border-bottom: 1px solid #333;
-        position:absolute; bottom:0;left:0;
-        width:100%;
-    }
-    .dis {
-        width:300px; height:300px;
-        position:absolute;left:50%; top:50%;transform: translate(-50%,-60%);
-        transition:all ease-out 0.05s ;transform-origin: 50% 50%;opacity:1;
-        &:hover {
-            path.on {
-                animation-duration:5s;
-            }
-        }
-        path.on {
-            animation: rotate_image 15s linear infinite;
-            transform-origin: 50% 50%;
-        }
-        
-        @keyframes rotate_image{
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    }
-    .flower2 {
-        left:25%; top:50%;
-    }
-    .flower3 {
-        left:75%; top:50%;
-    }
-    .click {
-        font:60px/1 'Abril Fatface';
-        position:absolute; left:50%; top:73%;
-        transform:translate(-50%,0%);
-    
-    }
-     // summary
      .wrap{
          width:100%; height:100vh;display: flex;overflow:hidden;
          .leftcircle{
-            width:20%;height:100%;border:1px solid #000; border-radius: 50%;background: #fff;
+            width:20%;height:100%;border:1px solid #000; border-radius: 50%;background: #fff;display: none;
          }
          .rightcircle{
-            width:20%;height:100%;border:1px solid #000; border-radius: 50%;background: #fff;
+            width:20%;height:100%;border:1px solid #000; border-radius: 50%;
+            background: #fff;box-sizing:border-box;padding:100px 100px 100px 115px;
+            .visible{
+                width:100%;display:none;
+                li{
+                    padding:13px 0px;font:bold 18px/1 'Raleway Dots';position: relative;
+                    &::before{
+                        content:"◌";display: block;position: absolute;left:-13%; top:30%;
+                    }
+                    &:nth-of-type(7)::before{
+                        display: none;
+                    }
+                    span{
+                        font:300 16px/1 'Noto Sans KR', sans-serif;
+                    }
+                    
+                }
+                ul.intent{
+                    text-indent: 20px;
+                    &::before{
+                        content:"◌";display: block;position: absolute;left:-25%; top:5%;
+                    }
+                    li::before{
+                        content:"+";display: block;position: absolute;left:-10%; top:30%;
+                    }
+                }
+            }
+            .self{
+                display:block; 
+                .intro li{
+                    font:300 16px/1 'Noto Sans KR', sans-serif;
+                    &::before{display: none;}
+                    &::after{
+                       content:""; display: block;
+                    }
+                }
+            }
          }
         .main {
-            width:60%;height:100%;margin:0 auto;background: #fff;
+            width:80%;height:100%;margin:0 auto;background: #fff;
             position:relative;border-left:1px solid #000;border-right:1px solid #000;
-            
+            .tabmenu {
+                width:80%;
+                position:absolute;top:260px;left:50%;transform:translate(-50%,0%);
+                ul{
+                    width:100%;display:flex;
+                    li{
+                        width:32%;height:50px;text-align:center;margin-right:3%;
+                        &:last-child{margin:0%;}
+                        &:nth-of-type(1),&:nth-of-type(3){
+                            a::before{
+                                content: "";display: block;width:50px; height:50px;background: #000;border-radius: 50%;
+                                position: absolute;left:50%;top:-100%;margin-left: -25px;transition:0.5s;opacity:0.1;
+                            }
+                        }
+                        &:nth-of-type(2){
+                            a{
+                                font:400 24px/45px 'Abril Fatface';
+                                &::before{
+                                    content: "";display: block;width:60px; height:60px;background: url(../img/joo.png) no-repeat center;
+                                    position: absolute;left:50%;top:-120%;margin-left: -30px;transition:0.5s;opacity:0.1;
+                                }
+                            }
+                        }
+                        &.on a{
+                            opacity: 1;
+                            span {
+                                top:75%;opacity: 1;
+                            }
+                            &::before{
+                            opacity:1;
+                            }
+                        }
+                        >a{
+                            display:block;width:100%; height:100%;position:relative;opacity:0.5;font:300 18px/50px 'Abril Fatface';
+                            span {
+                                position:absolute;top:40%; left:50%; transform:translate(-50%,0%);transition: 0.5s;opacity: 0;font:400 14px/1 'Noto Sans KR', sans-serif;
+                                color:#888;
+                            }
+                        }
+                        
+                    }
+                }
+                
+            }
             #site {
-                width:80%;height:370px; margin-top:300px;margin-left: 10%;
+                width:80%;height:370px; top:350px;margin-left: 10%;
                 position:absolute;z-index: 10;
                 transition: 0.5s;transform:translate(0%,-100%); opacity:0;
                 ul {
@@ -106,7 +139,8 @@
                     font:35px/100px 'Abril Fatface';color:#eee;
                     text-indent: 10%;
                     transition:0.5s;
-                    &:hover {
+
+                    &:hover, &.on {
                         font-size: 40px;
                         color:#000;
                     }
@@ -126,28 +160,31 @@
             }
             
             .cursor{
-                width:60px; height:60px;
-                position: absolute;left:50%;top:80%;transform:translate(-50%,0%);
+                width:50px; height:50px;
+                position: absolute;left:50%;bottom:15%;transform:translate(-50%,0%);
                 z-index: 10;transition:0.5s;text-align:center;
-                >img {
-                    width:100%; height:100%;
+                svg g{
+                    fill:none;stroke:#000;stroke-width: 5px;
+                    transition:0.5s;
                 }
                 span {
-                    display: block;position:absolute; left:55%;bottom:-80%;
-                    font:100 14px/1.2 'Abril Fatface';transition:0.5s;
-                    transform: rotate(-20deg);letter-spacing: 1px;
-                    animation:hov 3s linear infinite;
+                    position:absolute;left:50%;bottom:-100%;
+                    font:100 14px/1.2 'Abril Fatface';transition:0.5s;letter-spacing: 1px;transform:translate(-50%,0%);
+                    animation:hov 3s linear infinite alternate;
                     @keyframes hov {
-                        25%{bottom:-90%;}
-                        50%{bottom:-80%;}
-                        75%{bottom:-90%;}
-                        100%{bottom:-80%;}
+                        25%{bottom:-100%;}
+                        50%{bottom:-90%;}
+                        75%{bottom:-100%;}
+                        100%{bottom:-90%;}
                     }
                 }
                 &.on{
-                    top:75%;
+                    bottom:20%;
+                    svg g{
+                        fill:#000;stroke:none;
+                    }
                     span{
-                    animation: blink 3s linear infinite;
+                    animation: blink 3s linear infinite alternate;
                     @keyframes blink {
                         28%{opacity: 1;}
                         30%{opacity: 0;}
@@ -159,7 +196,7 @@
                 }
             }
             #clock {
-                width:200px; height:60px; position:absolute;right:20px;bottom:20px;
+                width:200px;height:60px; position:absolute;right:4%;bottom:20px;
                 &::after{
                     content: "";display: block;width:10px; height:10px;border-radius:50%;
                     position: absolute;right:20px; top:20px;
